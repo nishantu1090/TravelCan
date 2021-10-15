@@ -10,6 +10,26 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'travel-buddy',
+    loadChildren: () => import('./pages/travel-buddy/travel-buddy.module').then( m => m.TravelBuddyPageModule)
+  },
+  {
+    path: 'accommodation',
+    loadChildren: () => import('./pages/accommodation/accommodation.module').then( m => m.AccommodationPageModule)
+  },
+  {
+    path: 'ride-share',
+    loadChildren: () => import('./pages/ride-share/ride-share.module').then( m => m.RideSharePageModule)
   }
 ];
 
