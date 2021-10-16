@@ -1,9 +1,39 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>travel-buddy</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>TravelBuddy</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="flex-top">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">City</ion-label>
+          <ion-input placeholder="Enter your city"></ion-input>
+        </ion-item>
 
+        <ion-item>
+          <ion-label position="stacked">To</ion-label>
+          <ion-input placeholder="Enter destination"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Flight Number</ion-label>
+          <ion-input placeholder="Enter flight number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Date(MM/DD/YYYY)</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" min="2021-01-01" max="2021-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
+        </ion-item>
+
+        <ion-button shape="round">Find Partner</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
