@@ -7,10 +7,6 @@ const routes: Routes = [
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'
   },
-<<<<<<< HEAD
-=======
- 
->>>>>>> 1f98f918daf8256a9c80ecb17aa1149e692c4748
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
