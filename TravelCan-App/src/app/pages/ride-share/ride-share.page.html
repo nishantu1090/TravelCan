@@ -8,22 +8,29 @@
 </ion-header>
 
 <ion-content>
-  <div class="top">
+  <div class="myclass">
     <ion-card>
       <ion-card-content>
 
         <ion-item>
           <ion-label position="stacked">Start location</ion-label> 
-           
+          <ion-select placeholder="Select One">
+            <ion-select-option value="m">Montreal</ion-select-option>
+            <ion-select-option value="t">Toronto</ion-select-option>
+            <ion-select-option value="v">Vancouver</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Destination</ion-label>         
+          <ion-label position="stacked">Destination</ion-label> 
+          <ion-input></ion-input>        
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Number of passengers</ion-label>
+          <ion-input></ion-input> 
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Time</ion-label>
+          <ion-input placeholder="HH:mm"></ion-input> 
           <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
         </ion-item>
         <ion-button shape="rectangle"> Find your Ride! </ion-button>
