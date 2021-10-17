@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="flex-top">
+  <div class="myclass">
     <ion-card>
       <ion-card-content>
         <ion-item>
@@ -16,9 +16,19 @@
           <ion-input placeholder="Enter your city"></ion-input>
         </ion-item>
 
-        <ion-item>
+      <!--  <ion-item>
           <ion-label position="stacked">To</ion-label>
           <ion-input placeholder="Enter destination"></ion-input>
+        </ion-item>-->
+
+        <ion-item>
+          <ion-label position="stacked">Start location</ion-label> 
+          <ion-select placeholder="Enter destination">
+            <ion-select-option value="m">Windsor(YQG)</ion-select-option>
+            <ion-select-option value="t">Toronto(YYZ)</ion-select-option>
+            <ion-select-option value="v">Vancouver(YVR)</ion-select-option>
+            <ion-select-option value="v">Montreal(YUL)</ion-select-option>
+          </ion-select>
         </ion-item>
 
         <ion-item>
@@ -31,7 +41,7 @@
           <ion-datetime displayFormat="MM/DD/YYYY" min="2021-01-01" max="2021-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
         </ion-item>
 
-        <ion-button shape="round">Find Partner</ion-button>
+        <ion-button shape="rectangle">Find Your Buddy</ion-button>
 
       </ion-card-content>
     </ion-card>
