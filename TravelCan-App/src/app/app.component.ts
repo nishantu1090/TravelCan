@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import {  SocialAuthService, SocialUser } from 'angularx-social-login';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,16 +18,32 @@ export class AppComponent implements OnInit {
   ];
 
   public labels = ['Help & FAQ'];
-  user: SocialUser;
-  isSignedIn:boolean;
   
-  constructor( user: SocialUser, private socialAuthService: SocialAuthService) {}
+  isSignedIn:boolean;
+  firstName : String;
+  url:String;
+  constructor( private socialAuthService: SocialAuthService, private router: Router) {
+    
+  }
 
   ngOnInit(){
     this.socialAuthService.authState.subscribe((user) => {
-      this.user = user;
+      //this.user = user;
       this.isSignedIn = (user != null);
-      console.log(this.user);
+      this.firstName = user.firstName;
+      this.url = user.response.picture.data.url;
+      console.log(this.url);
+      console.log('in app');
+      console.log(user);
+      //console.log(this.user);
     });
   }
+
+  logOut(): void {
+    console.log('log out method called!');
+    this.socialAuthService.signOut();
+    
+    this.router.navigate(['']);
+  }
+
 }

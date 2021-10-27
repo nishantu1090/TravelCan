@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
-import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { FacebookLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 
 
 
@@ -16,7 +16,7 @@ import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } fro
     IonicModule,
     LoginPageRoutingModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    
   ],
   declarations: [
   
