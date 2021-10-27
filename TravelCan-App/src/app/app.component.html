@@ -2,9 +2,9 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-item>
+        <ion-item *ngIf="isSignedIn">
           <ion-img src={{url}}></ion-img>
-          <ion-label *ngIf="isSignedIn">welcome! {{firstName}}</ion-label>
+          <ion-label>welcome! {{firstName}}</ion-label>
         </ion-item>
         <ion-list id="inbox-list">
           <ion-list-header>TravelCAN</ion-list-header>

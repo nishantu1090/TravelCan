@@ -30,8 +30,10 @@ export class AppComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       //this.user = user;
       this.isSignedIn = (user != null);
+      if(user != null){
       this.firstName = user.firstName;
       this.url = user.response.picture.data.url;
+      }
       console.log(this.url);
       console.log('in app');
       console.log(user);
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
   logOut(): void {
     console.log('log out method called!');
     this.socialAuthService.signOut();
-    
+    this.isSignedIn = false;
     this.router.navigate(['']);
   }
 

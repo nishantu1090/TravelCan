@@ -39,6 +39,7 @@ export class LoginPage implements OnInit{
 
   facebookSignin(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    
     //if(this.user!=null){
       this.router.navigate(['travel-buddy']);
     //}
