@@ -2,6 +2,10 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
+        <ion-item *ngIf="isSignedIn">
+          <ion-img src={{url}}></ion-img>
+          <ion-label>welcome! {{firstName}}</ion-label>
+        </ion-item>
         <ion-list id="inbox-list">
           <ion-list-header>TravelCAN</ion-list-header>
           <ion-note>Our Services</ion-note>
@@ -22,6 +26,7 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list>
+        <ion-button *ngIf="isSignedIn" (click)="logOut()" >Log Out</ion-button>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
