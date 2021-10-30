@@ -25,7 +25,4 @@ export class TravelBuddyPage implements OnInit {
   }
 }
 
-export interface People{
-  name : String;
-  doj : String;
-}
+

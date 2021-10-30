@@ -18,12 +18,12 @@ export class TravelBuddyService {
     
   }
  
-  buddies : TravelBuddy[];
+  buddies :TravelBuddy[] = [];
 
   getTravelBuddies(): TravelBuddy[]{
     console.log('service called!');
     
-    this.http.get(`${this.url}`).toPromise().then( data => {
+    this.http.get(`${this.url}/getTravelBuddies`).toPromise().then( data => {
       
       console.log('in service:',this.buddies);
 
@@ -36,6 +36,7 @@ export class TravelBuddyService {
             buddy.name = element.name;
             buddy.email = element.email;
             buddy.doj = element.doj;
+            console.log(buddy);
             this.buddies.push(buddy);
           }));
           

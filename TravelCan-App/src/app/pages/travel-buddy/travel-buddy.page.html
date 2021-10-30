@@ -47,7 +47,7 @@
     
   </div>
   <div>
-    <ion-card *ngFor = "let buddy of (result | async); let i of index">
+    <ion-card *ngFor = "let buddy of travelBuddies; let i of index">
       <ion-item>
         <ion-label>{{buddy.name}}</ion-label>
       </ion-item>
