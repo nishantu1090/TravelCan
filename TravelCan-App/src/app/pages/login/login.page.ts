@@ -30,7 +30,7 @@ export class LoginPage implements OnInit{
   }
 
   login(){
-    this.router.navigate(['travel-buddy']);
+    this.router.navigate(['dashboard']);
   }
   
   register(){
@@ -41,7 +41,7 @@ export class LoginPage implements OnInit{
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
     
     //if(this.user!=null){
-      this.router.navigate(['travel-buddy']);
+      this.router.navigate(['dashboard']);
     //}
   }
 
