@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { TravelBuddy } from '../models/TravelBuddy';
 
 
@@ -30,7 +28,7 @@ export class TravelBuddyService {
       for(let key in data){
         if(data.hasOwnProperty(key)){
           
-          console.log(key,data[key].forEach(element => {
+          data[key].forEach(element => {
             console.log(element.name);
             let buddy = new TravelBuddy();
             buddy.name = element.name;
@@ -38,7 +36,7 @@ export class TravelBuddyService {
             buddy.doj = element.doj;
             console.log(buddy);
             this.buddies.push(buddy);
-          }));
+          });
           
         
         }
