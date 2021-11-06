@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path:'',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   }
+
 ];
 
 @NgModule({
