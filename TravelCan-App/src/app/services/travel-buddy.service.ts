@@ -26,8 +26,17 @@ export class TravelBuddyService {
       console.log('in service:',this.buddies);
 
       for(let key in data){
+        console.log(key);
         if(data.hasOwnProperty(key)){
+          console.log(data[key]);
           
+          let buddy = new TravelBuddy();
+          buddy.name = data[key].name;
+          buddy.destination = data[key].destination;
+          buddy.origin = data[key].origin;
+          buddy.email = data[key].email;
+          this.buddies.push(buddy);
+          /*
           data[key].forEach(element => {
             console.log(element.name);
             let buddy = new TravelBuddy();
@@ -36,7 +45,7 @@ export class TravelBuddyService {
             buddy.doj = element.doj;
             console.log(buddy);
             this.buddies.push(buddy);
-          });
+          });*/
           
         
         }
