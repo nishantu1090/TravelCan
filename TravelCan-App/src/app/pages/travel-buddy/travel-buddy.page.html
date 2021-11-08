@@ -11,9 +11,11 @@
   <div class="myclass">
     <ion-card>
       <ion-card-content>
+        <form (ngSubmit)="addTravelPlan(f)" #f="ngForm">
+       
         <ion-item>
-          <ion-label position="stacked">City</ion-label>
-          <ion-input placeholder="Enter your city"></ion-input>
+          <ion-label position="stacked">Origin</ion-label>
+          <ion-input ngModel name="origin" placeholder="Enter your origin"></ion-input>
         </ion-item>
 
       <!--  <ion-item>
@@ -22,26 +24,28 @@
         </ion-item>-->
 
         <ion-item>
-          <ion-label position="stacked">Start location</ion-label> 
-          <ion-select placeholder="Enter destination">
-            <ion-select-option value="m">Windsor(YQG)</ion-select-option>
-            <ion-select-option value="t">Toronto(YYZ)</ion-select-option>
-            <ion-select-option value="v">Vancouver(YVR)</ion-select-option>
-            <ion-select-option value="v">Montreal(YUL)</ion-select-option>
+          <ion-label position="stacked">Destination</ion-label> 
+          <ion-select ngModel name="destination" placeholder="Enter destination">
+            <ion-select-option value="Windsor">Windsor(YQG)</ion-select-option>
+            <ion-select-option value="Toronto">Toronto(YYZ)</ion-select-option>
+            <ion-select-option value="Vancouver">Vancouver(YVR)</ion-select-option>
+            <ion-select-option value="Montreal">Montreal(YUL)</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Flight Number</ion-label>
-          <ion-input placeholder="Enter flight number"></ion-input>
+          <ion-input ngModel name="FlightNumber" placeholder="Enter flight number"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Date(MM/DD/YYYY)</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY" min="2021-01-01" max="2021-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
+          <ion-datetime ngModel name="doj" displayFormat="MM/DD/YYYY" min="2021-01-01" max="2023-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
         </ion-item>
 
-        <ion-button (click)="getBuddies()" shape="rectangle">Find Your Buddy</ion-button>
+        <ion-button id="findTravelButton" (click)="getBuddies()" [ngClass]="{disabled: !travelPlanAdded}" >Find Your Buddy</ion-button>
+        <ion-button type= "submit" id="addTravelPlan" (click) = "addTravelPlan()" shape="rectangle">Add Travel Plan</ion-button>
+        </form>
       </ion-card-content>
     </ion-card>
     

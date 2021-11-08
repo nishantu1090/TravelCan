@@ -36,16 +36,7 @@ export class TravelBuddyService {
           buddy.origin = data[key].origin;
           buddy.email = data[key].email;
           this.buddies.push(buddy);
-          /*
-          data[key].forEach(element => {
-            console.log(element.name);
-            let buddy = new TravelBuddy();
-            buddy.name = element.name;
-            buddy.email = element.email;
-            buddy.doj = element.doj;
-            console.log(buddy);
-            this.buddies.push(buddy);
-          });*/
+          
           
         
         }

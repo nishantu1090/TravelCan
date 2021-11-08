@@ -15,7 +15,9 @@ export class LoginPage implements OnInit{
   user: SocialUser;
   isSignedin: boolean = null;
 
-  constructor( private formBuilder: FormBuilder, private router: Router, private socialAuthService: SocialAuthService) { 
+  constructor( private formBuilder: FormBuilder, 
+               private router: Router,
+               private socialAuthService: SocialAuthService) { 
 
   }
 
