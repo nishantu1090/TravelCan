@@ -1,7 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TravelBuddy } from '../models/TravelBuddy';
+import { TravelPlan} from '../models/TravelPlan';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    Authorization: 'my-auth-token'
+  })
+};
 
  
 @Injectable({
@@ -44,6 +54,16 @@ export class TravelBuddyService {
     });
     console.log('final buddies in service', this.buddies);
     return this.buddies;
+  }
+
+  addTravelPlan(travelPlan: TravelPlan): Observable<TravelPlan> {
+    return this.http.post<TravelPlan>(`${this.url}/addTravelPlan`, travelPlan, httpOptions)
+      .pipe(
+        catchError(this.handleError('addTravelPlan', travelPlan))
+      );
+  }
+  handleError(arg0: string, hero: any): (err: any, caught: Observable<any>) => import("rxjs").ObservableInput<any> {
+    throw new Error('Method not implemented.');
   }
 }
 

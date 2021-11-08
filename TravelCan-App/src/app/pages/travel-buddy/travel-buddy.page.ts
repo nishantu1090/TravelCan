@@ -59,6 +59,8 @@ export class TravelBuddyPage implements OnInit {
     console.log(form);
     console.log(this.user.email);   
     this.travelPlanAdded = true;
+
+    this.travelBuddyService.addTravelPlan(this.travelPlan);
   }
 }
 
