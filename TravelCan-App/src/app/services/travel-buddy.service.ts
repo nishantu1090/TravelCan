@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
+
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    Authorization: 'my-auth-token'
+    'Content-Type':  'application/json'
+    
   })
 };
 
@@ -28,10 +29,10 @@ export class TravelBuddyService {
  
   buddies :TravelBuddy[] = [];
 
-  getTravelBuddies(): TravelBuddy[]{
+  getTravelBuddies(travelPlan: TravelPlan): TravelBuddy[]{
     console.log('service called!');
     
-    this.http.get(`${this.url}/getTravelBuddies`).toPromise().then( data => {
+    this.http.post<TravelPlan>(`${this.url}/getTravelBuddies`, travelPlan, httpOptions).toPromise().then( data => {
       
       console.log('in service:',this.buddies);
 
@@ -41,10 +42,10 @@ export class TravelBuddyService {
           console.log(data[key]);
           
           let buddy = new TravelBuddy();
-          buddy.name = data[key].name;
-          buddy.destination = data[key].destination;
-          buddy.origin = data[key].origin;
+          buddy.firstName = data[key].firstName;
+          buddy.lastName = data[key].lastName;
           buddy.email = data[key].email;
+          console.log("fetched buddy", buddy)
           this.buddies.push(buddy);
           
           
@@ -56,15 +57,23 @@ export class TravelBuddyService {
     return this.buddies;
   }
 
-  addTravelPlan(travelPlan: TravelPlan): Observable<TravelPlan> {
-    return this.http.post<TravelPlan>(`${this.url}/addTravelPlan`, travelPlan, httpOptions)
-      .pipe(
-        catchError(this.handleError('addTravelPlan', travelPlan))
-      );
+  addTravelPlan(travelPlan: TravelPlan) {
+    console.log('addTravelPlan method in service called');
+    return this.http.post<TravelPlan>(`${this.url}/addTravelPlan`, travelPlan, httpOptions).toPromise()
+    .then(this.extractData)
+		.catch(this.handleErrorPromise);
   }
-  handleError(arg0: string, hero: any): (err: any, caught: Observable<any>) => import("rxjs").ObservableInput<any> {
-    throw new Error('Method not implemented.');
+
+  private extractData(res: any) {
+    let body = res;
+    console.log('after post data', body)
+    return body;
   }
+  private handleErrorPromise(error: Response | any) {
+    console.error(error.message || error);
+    return Promise.reject(error.message || error);
+  } 
+  
 }
 
 

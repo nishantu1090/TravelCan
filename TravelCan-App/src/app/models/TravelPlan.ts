@@ -5,4 +5,5 @@ export class TravelPlan{
     origin : String;
     destination : String;
     email : String;
+    flightNumber : String;
 }

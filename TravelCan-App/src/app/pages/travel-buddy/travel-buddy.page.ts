@@ -6,6 +6,7 @@ import { TravelBuddy } from 'src/app/models/TravelBuddy';
 import { Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { TravelPlan } from 'src/app/models/TravelPlan';
 @Component({
   selector: 'app-travel-buddy',
   templateUrl: './travel-buddy.page.html',
@@ -17,16 +18,11 @@ export class TravelBuddyPage implements OnInit {
   results: Observable<any>;
   travelPlanAdded : Boolean;
   user:SocialUser;
-  travelPlan = {
-    firstName: '',
-    lastName: '',
-    origin: '',
-    email: '',
-    doj:'',
-    destination: ' '
-
-  }
-  userName : String;
+  travelPlan : TravelPlan = new TravelPlan();
+  origin : String;
+  destination : String;
+  doj : String;
+  flightNumber: String;
   constructor(private travelBuddyService : TravelBuddyService,
               private socialAuthService: SocialAuthService) { }
 
@@ -39,12 +35,17 @@ export class TravelBuddyPage implements OnInit {
     });
   }
 
-  getBuddies(){
-    
+  getBuddies(form: NgForm){
+    console.log('getBuddies-travel-plan',this.travelPlan);
+    console.log('searching for origin',this.origin);
+    console.log('searchind flight number', this.flightNumber);
     if(!this.travelPlanAdded){
       return;
     }
-    this.travelBuddies = this.travelBuddyService.getTravelBuddies();
+    this.travelPlan.doj = this.doj;
+    this.travelPlan.flightNumber = this.flightNumber;
+    this.travelPlan.origin = this.origin;
+    this.travelBuddies = this.travelBuddyService.getTravelBuddies(this.travelPlan);
     console.log('in component', this.travelBuddies);
   }
 
@@ -55,9 +56,9 @@ export class TravelBuddyPage implements OnInit {
     this.travelPlan.origin = form.value.origin;
     this.travelPlan.destination = form.value.destination;
     this.travelPlan.doj = form.value.doj.substring(0,10);
+    this.travelPlan.flightNumber = form.value.flightNumber;
     console.log(this.travelPlan);
-    console.log(form);
-    console.log(this.user.email);   
+    
     this.travelPlanAdded = true;
 
     this.travelBuddyService.addTravelPlan(this.travelPlan);

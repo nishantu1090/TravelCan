@@ -1,5 +1,6 @@
 export class TravelBuddy{
-    name : String;
+    firstName : String;
+    lastName : String;
     doj : String;
     email : String;
     origin : String;
