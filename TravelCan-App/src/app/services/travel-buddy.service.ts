@@ -30,11 +30,11 @@ export class TravelBuddyService {
   buddies :TravelBuddy[] = [];
 
   getTravelBuddies(travelPlan: TravelPlan): TravelBuddy[]{
-    console.log('service called!');
+    console.log('get travel buddy service called!');
     
     this.http.post<TravelPlan>(`${this.url}/getTravelBuddies`, travelPlan, httpOptions).toPromise().then( data => {
       
-      console.log('in service:',this.buddies);
+      console.log('in service:', data);
 
       for(let key in data){
         console.log(key);
@@ -42,7 +42,7 @@ export class TravelBuddyService {
           console.log(data[key]);
           
           let buddy = new TravelBuddy();
-          buddy.firstName = data[key].firstName;
+          buddy.firstName = data[key].firstName + " " + data[key].lastName;
           buddy.lastName = data[key].lastName;
           buddy.email = data[key].email;
           console.log("fetched buddy", buddy)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef,OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TravelBuddyService} from './../../services/travel-buddy.service';
 import {map} from 'rxjs/operators';
@@ -19,10 +19,10 @@ export class TravelBuddyPage implements OnInit {
   travelPlanAdded : Boolean;
   user:SocialUser;
   travelPlan : TravelPlan = new TravelPlan();
-  origin : String;
-  destination : String;
-  doj : String;
-  flightNumber: String;
+  @ViewChild('origin', { read: ElementRef }) origin : ElementRef;
+  @ViewChild('destination',  { read: ElementRef }) destination : ElementRef;
+  @ViewChild('doj',  { read: ElementRef }) doj: ElementRef;
+  @ViewChild('flightNumber',  { read: ElementRef }) flightNumber: ElementRef;
   constructor(private travelBuddyService : TravelBuddyService,
               private socialAuthService: SocialAuthService) { }
 
@@ -33,18 +33,20 @@ export class TravelBuddyPage implements OnInit {
       
       console.log('travelbuddy user', this.user);
     });
+    
   }
 
   getBuddies(form: NgForm){
     console.log('getBuddies-travel-plan',this.travelPlan);
-    console.log('searching for origin',this.origin);
-    console.log('searchind flight number', this.flightNumber);
-    if(!this.travelPlanAdded){
+    console.log('searching for origin',this.origin.nativeElement.value);
+    //console.log('searchind flight number', this.flightNumber);
+    /*if(!this.travelPlanAdded){
       return;
-    }
-    this.travelPlan.doj = this.doj;
-    this.travelPlan.flightNumber = this.flightNumber;
-    this.travelPlan.origin = this.origin;
+    }*/
+
+    this.travelPlan.doj = this.doj.nativeElement.value.substring(0,10);
+    this.travelPlan.flightNumber = this.flightNumber.nativeElement.value;
+    this.travelPlan.origin = this.origin.nativeElement.value;
     this.travelBuddies = this.travelBuddyService.getTravelBuddies(this.travelPlan);
     console.log('in component', this.travelBuddies);
   }
