@@ -15,14 +15,16 @@ import { TravelPlan } from 'src/app/models/TravelPlan';
 export class TravelBuddyPage implements OnInit {
 
   travelBuddies: TravelBuddy[];
+  filteredTravelBuddies : TravelBuddy[] = [];
   results: Observable<any>;
   travelPlanAdded : Boolean;
-  user:SocialUser;
+  user:SocialUser = new SocialUser();
   travelPlan : TravelPlan = new TravelPlan();
   @ViewChild('origin', { read: ElementRef }) origin : ElementRef;
   @ViewChild('destination',  { read: ElementRef }) destination : ElementRef;
   @ViewChild('doj',  { read: ElementRef }) doj: ElementRef;
   @ViewChild('flightNumber',  { read: ElementRef }) flightNumber: ElementRef;
+  @ViewChild('addTravelPlanBtn', {read: ElementRef}) addTravelPlanBtn : ElementRef;
   constructor(private travelBuddyService : TravelBuddyService,
               private socialAuthService: SocialAuthService) { }
 
@@ -40,14 +42,29 @@ export class TravelBuddyPage implements OnInit {
     console.log('getBuddies-travel-plan',this.travelPlan);
     console.log('searching for origin',this.origin.nativeElement.value);
     //console.log('searchind flight number', this.flightNumber);
-    /*if(!this.travelPlanAdded){
+    if(!this.travelPlanAdded){
       return;
-    }*/
+    }
 
     this.travelPlan.doj = this.doj.nativeElement.value.substring(0,10);
     this.travelPlan.flightNumber = this.flightNumber.nativeElement.value;
     this.travelPlan.origin = this.origin.nativeElement.value;
     this.travelBuddies = this.travelBuddyService.getTravelBuddies(this.travelPlan);
+    
+    console.log(this.travelBuddies.length);
+
+    /*for(let i in this.travelBuddies){
+      console.log(this.travelBuddies[i].email); 
+      /*if(this.user.email !== undefined){
+        if(travelBuddy.email !== this.user.email)
+          this.filteredTravelBuddies.push(travelBuddy);
+      }
+    }
+
+    this.travelBuddies = this.filteredTravelBuddies;
+    console.log("current user email", this.user.email);*/
+    //this.filteredTravelBuddies= this.travelBuddies.filter( travelBuddy => travelBuddy.email !== this.user.email);
+    //this.travelBuddies = this.filteredTravelBuddies;
     console.log('in component', this.travelBuddies);
   }
 
@@ -62,7 +79,8 @@ export class TravelBuddyPage implements OnInit {
     console.log(this.travelPlan);
     
     this.travelPlanAdded = true;
-
+    this.addTravelPlanBtn.nativeElement.innerHTML= "Add Another Travel Plan";
+    console.log(this.addTravelPlanBtn.nativeElement);
     this.travelBuddyService.addTravelPlan(this.travelPlan);
   }
 }
