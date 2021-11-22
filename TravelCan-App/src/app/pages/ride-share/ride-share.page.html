@@ -14,7 +14,7 @@
 
         <ion-item>
           <ion-label position="stacked">Start location</ion-label> 
-          <ion-select placeholder="Select One">
+          <ion-select placeholder="Select Airport name">
             <ion-select-option value="m">Montreal</ion-select-option>
             <ion-select-option value="t">Toronto</ion-select-option>
             <ion-select-option value="v">Vancouver</ion-select-option>
@@ -25,23 +25,34 @@
           <ion-input></ion-input>        
         </ion-item>
         <ion-item>
+          <ion-label position="stacked">Exit Terminal number</ion-label>
+          <ion-select placeholder="">
+            <ion-select-option value="one">1</ion-select-option>
+            <ion-select-option value="two">2</ion-select-option>
+            <ion-select-option value="three">3</ion-select-option>
+          </ion-select>
+        </ion-item>
+       
+        <ion-item>
           <ion-label position="stacked">Number of passengers</ion-label>
           <ion-input></ion-input> 
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Time</ion-label>
+          <ion-label position="stacked">Number of Luggage</ion-label>
+          <ion-input></ion-input> 
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Contact Number</ion-label>
+          <ion-input></ion-input> 
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Ride time</ion-label>
           <ion-input placeholder="HH:mm"></ion-input> 
           <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
         </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Airport Name</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Mode Of Transport</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-        <ion-button shape="rectangle"> Find your Ride! </ion-button>
+        <ion-button shape="rectangle"> Find Ride </ion-button>
+        <ion-button shape="rectangle"> Post Ride</ion-button>
+
       </ion-card-content>
     </ion-card>
   </div>
