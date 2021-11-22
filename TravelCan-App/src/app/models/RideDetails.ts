@@ -1,9 +1,11 @@
-export class TravelPlan{
+export class RideDetails{
     firstName : String;
     lastName : String;
-    doj : String;
-    origin : String;
+    airportName : String;
     destination : String;
-    email : String;
-    flightNumber : String;
+    exitTerminalNumber : number;
+    numberOfPassengers : number;
+    numberOfLuggages : number;
+    contactNumber : string;
+    timeOfRide :  Date;
 }
