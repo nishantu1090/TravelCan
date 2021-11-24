@@ -3,9 +3,9 @@ export class RidePlanDetails{
     lastName : String;
     airportName : String;
     destination : String;
-    exitTerminalNumber : number;
+    exitTerminalNumber : String;
     numberOfPassengers : number;
     numberOfLuggages : number;
     contactNumber : string;
-    timeOfRide :  Date;
+    timeOfRide :  String;
 }
