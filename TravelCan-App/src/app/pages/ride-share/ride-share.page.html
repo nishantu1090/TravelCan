@@ -11,49 +11,85 @@
   <div class="myclass">
     <ion-card>
       <ion-card-content>
+        <form (ngSubmit)="addRideDetails(f)" #f="ngForm">
 
         <ion-item>
           <ion-label position="stacked">Start location</ion-label> 
-          <ion-select placeholder="Select Airport name">
-            <ion-select-option value="m">Montreal</ion-select-option>
-            <ion-select-option value="t">Toronto</ion-select-option>
-            <ion-select-option value="v">Vancouver</ion-select-option>
+          <ion-select #airportName ngModel name="airportName" placeholder="Select Airport name">
+            <ion-select-option value="Montreal">Montreal</ion-select-option>
+            <ion-select-option value="Toronto">Toronto</ion-select-option>
+            <ion-select-option value="Vancouver">Vancouver</ion-select-option>
           </ion-select>
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Destination</ion-label> 
-          <ion-input></ion-input>        
+          <ion-input #destination ngModel name="destination" placeholder="Enter your destination"></ion-input>      
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Exit Terminal number</ion-label>
-          <ion-select placeholder="">
-            <ion-select-option value="one">1</ion-select-option>
-            <ion-select-option value="two">2</ion-select-option>
-            <ion-select-option value="three">3</ion-select-option>
+          <ion-select #exitTerminalNumber ngModel name="exitTerminalNumber" placeholder="Enter the exit Terminal">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
           </ion-select>
         </ion-item>
        
         <ion-item>
           <ion-label position="stacked">Number of passengers</ion-label>
-          <ion-input></ion-input> 
+          <ion-input #numberOfPassengers ngModel name="numberOfPassengers" placeholder="Enter number of passengers"></ion-input>    
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Number of Luggage</ion-label>
-          <ion-input></ion-input> 
+          <ion-input #numberOfLuggages ngModel name="numberOfLuggages" placeholder="Enter number of luggages"></ion-input>
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Contact Number</ion-label>
-          <ion-input></ion-input> 
+          <ion-input #contactNumber ngModel name="contactNumber" placeholder="Enter contact number"></ion-input>
         </ion-item>
+
         <ion-item>
-          <ion-label position="stacked">Ride time</ion-label>
-          <ion-input placeholder="HH:mm"></ion-input> 
+          <ion-label position="stacked">Ride time</ion-label>          
+          <ion-input #timeOfRide ngModel name="timeOfRide" placeholder="Enter time of ride"></ion-input>
           <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
         </ion-item>
-        <ion-button shape="rectangle"> Find Ride </ion-button>
-        <ion-button shape="rectangle"> Post Ride</ion-button>
+
+        <!--<ion-button shape="rectangle"> Find Ride </ion-button>
+        <ion-button shape="rectangle"> Post Ride</ion-button>-->
+
+        <ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>
+        <ion-button type= "submit"  #addRideDetailsBtn (click) = "addRideDetails()" shape="rectangle">Add Ride</ion-button>
+        </form>
 
       </ion-card-content>
     </ion-card>
   </div>
+
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+     
+      <ion-title>Available Rides</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <ion-card *ngFor = "let ride of ridePlanDetails; let i of index">
+      <ion-item>
+        <ion-label>{{ride.firstName}}</ion-label>
+        <!--<ion-label>{{ride.lastName}}</ion-label>
+        <ion-label>{{ride.airportName}}</ion-label>
+        <ion-label>{{ride.destination}}</ion-label>
+        <ion-label>{{ride.exitTerminalNumber}}</ion-label>
+        <ion-label>{{ride.numberOfPassengers}}</ion-label>
+        <ion-label>{{ride.numberOfLuggages}}</ion-label>-->
+        <ion-label>{{ride.contactNumber}}</ion-label>
+        <!--<ion-label>{{ride.timeOfRide}}</ion-label> -->
+      </ion-item>
+      <!--<ion-item>
+        <ion-label>{{buddy.email}}</ion-label>
+      </ion-item> -->
+    </ion-card>
+  </div>  
 </ion-content>
