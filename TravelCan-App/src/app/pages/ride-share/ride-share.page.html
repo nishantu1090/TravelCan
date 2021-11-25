@@ -52,16 +52,17 @@
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Ride time</ion-label>          
-          <ion-input #timeOfRide ngModel name="timeOfRide" placeholder="Enter time of ride"></ion-input>
+          <ion-label position="stacked">Ride Date</ion-label>          
+          <ion-input #timeOfRide ngModel name="timeOfRide" placeholder="Enter date in YYYY-MM-DD"></ion-input>
           <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
         </ion-item>
 
         <!--<ion-button shape="rectangle"> Find Ride </ion-button>
         <ion-button shape="rectangle"> Post Ride</ion-button>-->
 
-        <ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>
+        <!--<ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>-->
         <ion-button type= "submit"  #addRideDetailsBtn (click) = "addRideDetails()" shape="rectangle">Add Ride</ion-button>
+        <ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>
         </form>
 
       </ion-card-content>
