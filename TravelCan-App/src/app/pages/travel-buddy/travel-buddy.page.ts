@@ -7,6 +7,7 @@ import { Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { TravelPlan } from 'src/app/models/TravelPlan';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 @Component({
   selector: 'app-travel-buddy',
   templateUrl: './travel-buddy.page.html',
@@ -52,19 +53,8 @@ export class TravelBuddyPage implements OnInit {
     this.travelBuddies = this.travelBuddyService.getTravelBuddies(this.travelPlan);
     
     console.log(this.travelBuddies.length);
-
-    /*for(let i in this.travelBuddies){
-      console.log(this.travelBuddies[i].email); 
-      /*if(this.user.email !== undefined){
-        if(travelBuddy.email !== this.user.email)
-          this.filteredTravelBuddies.push(travelBuddy);
-      }
-    }
-
-    this.travelBuddies = this.filteredTravelBuddies;
-    console.log("current user email", this.user.email);*/
-    //this.filteredTravelBuddies= this.travelBuddies.filter( travelBuddy => travelBuddy.email !== this.user.email);
-    //this.travelBuddies = this.filteredTravelBuddies;
+    
+    console.log('filtered buddies', this.filteredTravelBuddies);
     console.log('in component', this.travelBuddies);
   }
 
@@ -76,7 +66,8 @@ export class TravelBuddyPage implements OnInit {
     this.travelPlan.destination = form.value.destination;
     this.travelPlan.doj = form.value.doj.substring(0,10);
     this.travelPlan.flightNumber = form.value.flightNumber;
-    console.log(this.travelPlan);
+    this.travelPlan.phoneNumber = form.value.phoneNumber;
+    console.log('travel plan', this.travelPlan);
     
     this.travelPlanAdded = true;
     this.addTravelPlanBtn.nativeElement.innerHTML= "Add Another Travel Plan";

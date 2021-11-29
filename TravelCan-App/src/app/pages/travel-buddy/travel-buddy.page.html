@@ -43,7 +43,10 @@
           <ion-label position="stacked">Date(MM/DD/YYYY)</ion-label>
           <ion-datetime #doj ngModel name="doj" displayFormat="MM/DD/YYYY" min="2021-01-01" max="2023-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
         </ion-item>
-
+        <ion-item>
+          <ion-label position = "stacked">Phone Number</ion-label>
+          <ion-input ngModel name="phoneNumber"></ion-input>
+        </ion-item>
         <ion-button  id="findTravelButton" (click)="getBuddies()" [ngClass]="{disabled: !travelPlanAdded}" >Find Your Buddy</ion-button>
         <ion-button type= "submit"  #addTravelPlanBtn (click) = "addTravelPlan()" shape="rectangle">Add Travel Plan</ion-button>
         </form>
@@ -58,14 +61,22 @@
     </ion-toolbar>
   </ion-header>
   <div>
-    <ion-card *ngFor = "let buddy of travelBuddies; let i of index">
+    <div *ngFor = "let buddy of travelBuddies; let i of index">
+      <ion-card>
       <ion-item>
-        <ion-label>{{buddy.firstName}}</ion-label>
-        <ion-label>{{buddy.email}}</ion-label>
+        <ion-label>Name : {{buddy.firstName}}</ion-label>
       </ion-item>
+      <ion-item>
+        <ion-label>Email id: {{buddy.email}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number: {{buddy.phoneNumber}}</ion-label>
+      </ion-item>
+      
+      </ion-card>
       <!--<ion-item>
         <ion-label>{{buddy.email}}</ion-label>
       </ion-item> -->
-    </ion-card>
+    </div>
   </div>
 </ion-content>

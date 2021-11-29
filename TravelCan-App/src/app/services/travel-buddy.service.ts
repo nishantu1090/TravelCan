@@ -35,7 +35,7 @@ export class TravelBuddyService {
     this.http.post<TravelPlan>(`${this.url}/getTravelBuddies`, travelPlan, httpOptions).toPromise().then( data => {
       
       console.log('in service:', data);
-
+      this.buddies = []
       for(let key in data){
         console.log(key);
         if(data.hasOwnProperty(key)){
@@ -45,6 +45,7 @@ export class TravelBuddyService {
           buddy.firstName = data[key].firstName + " " + data[key].lastName;
           buddy.lastName = data[key].lastName;
           buddy.email = data[key].email;
+          buddy.phoneNumber = data[key].phoneNumber;
           console.log("fetched buddy", buddy)
           this.buddies.push(buddy);
           

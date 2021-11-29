@@ -5,4 +5,5 @@ export class TravelBuddy{
     email : String;
     origin : String;
     destination : String;
+    phoneNumber : String;
 }
