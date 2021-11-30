@@ -27,6 +27,7 @@ export class RideSharePage implements OnInit {
   @ViewChild('numberOfPassengers',  { read: ElementRef }) numberOfPassengers: ElementRef;
   @ViewChild('numberOfLuggages',  { read: ElementRef }) numberOfLuggages: ElementRef;
   @ViewChild('contactNumber',  { read: ElementRef }) contactNumber: ElementRef;
+  @ViewChild('dateOfRide',  { read: ElementRef }) dateOfRide: ElementRef;
   @ViewChild('timeOfRide',  { read: ElementRef }) timeOfRide: ElementRef;
   @ViewChild('addRideDetailsBtn', {read: ElementRef}) addRideDetailsBtn : ElementRef; // note the name of the button
   constructor(private rideShareService : RideShareService, //Note the name of the service
@@ -58,6 +59,7 @@ export class RideSharePage implements OnInit {
     this.rideDetails.numberOfPassengers = this.numberOfPassengers.nativeElement.value;
     this.rideDetails.numberOfLuggages = this.numberOfLuggages.nativeElement.value;
     this.rideDetails.contactNumber = this.contactNumber.nativeElement.value;
+    this.rideDetails.dateOfRide = this.dateOfRide.nativeElement.value;
     this.rideDetails.timeOfRide = this.timeOfRide.nativeElement.value.substring(0,10); //doubt if it is this way for date-time
     this.ridePlanDetails = this.rideShareService.getRideDetails(this.rideDetails);
     
@@ -74,6 +76,7 @@ export class RideSharePage implements OnInit {
     this.rideDetails.numberOfPassengers = form.value.numberOfPassengers;
     this.rideDetails.numberOfLuggages = form.value.numberOfLuggages;
     this.rideDetails.contactNumber = form.value.contactNumber;
+    this.rideDetails.dateOfRide = form.value.dateOfRide;
     this.rideDetails.timeOfRide = form.value.timeOfRide.substring(0,10);
     console.log(this.rideDetails);
     
