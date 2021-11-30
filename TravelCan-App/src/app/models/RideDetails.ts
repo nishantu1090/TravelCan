@@ -7,5 +7,6 @@ export class RideDetails{
     numberOfPassengers : number;
     numberOfLuggages : number;
     contactNumber : string;
+    dateOfRide : String;
     timeOfRide :  String;
 }
