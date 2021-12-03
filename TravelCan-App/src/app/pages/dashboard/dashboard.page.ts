@@ -25,4 +25,5 @@ export class DashboardPage implements OnInit {
   routeToAccommodation(){
     this.router.navigate(['accommodation'])
   }
+  
 }
