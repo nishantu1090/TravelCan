@@ -82,21 +82,15 @@
     </ion-toolbar>
   </ion-header>
   <div>
-    <ion-card *ngFor = "let ride of ridePlanDetails; let i of index">
+    <div *ngFor = "let ride of ridePlanDetails; let i of index">
+    <ion-card>
       <ion-item>
-        <ion-label>{{ride.firstName}}</ion-label>
-        <!--<ion-label>{{ride.lastName}}</ion-label>
-        <ion-label>{{ride.airportName}}</ion-label>
-        <ion-label>{{ride.destination}}</ion-label>
-        <ion-label>{{ride.exitTerminalNumber}}</ion-label>
-        <ion-label>{{ride.numberOfPassengers}}</ion-label>
-        <ion-label>{{ride.numberOfLuggages}}</ion-label>-->
-        <ion-label>{{ride.contactNumber}}</ion-label>
-        <!--<ion-label>{{ride.timeOfRide}}</ion-label> -->
+        <ion-label>Name : {{ride.firstName}}</ion-label>
       </ion-item>
-      <!--<ion-item>
-        <ion-label>{{buddy.email}}</ion-label>
-      </ion-item> -->
-    </ion-card>
+      <ion-item>
+        <ion-label>Contact Number: {{ride.contactNumber}}</ion-label>
+      </ion-item>
+      </ion-card>
+   </div> 
   </div>  
 </ion-content>

@@ -36,14 +36,14 @@ export class RideShareService {
     this.http.post<RideDetails>(`${this.url}/getRideDetails`, rideDetails, httpOptions).toPromise().then( data => {
       
       console.log('in service:', data);
-
+      this.rides = []
       for(let key in data){
         console.log(key);
         if(data.hasOwnProperty(key)){
           console.log(data[key]);
           
           let ride = new RidePlanDetails();
-          ride.firstName = data[key];
+          ride.firstName = data[key].firstName;
           ride.contactNumber = data[key].contactNumber;
          // ride.firstName = data[key].firstName + " " + data[key].lastName;
           //ride.lastName = data[key].lastName;
