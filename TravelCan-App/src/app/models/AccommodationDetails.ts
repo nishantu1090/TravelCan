@@ -10,4 +10,7 @@ export class AccommodationDetails{
     furnished : String;
     appliances :  String;
     petFriendly : String;
+    address : String;
+    landlordName : String;
+    landlordPhone : String
 }

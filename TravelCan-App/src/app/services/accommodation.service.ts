@@ -55,4 +55,21 @@ export class AccommodationService {
     console.log('final accommodations in service', this.accommodationResponse);
     return this.accommodationResponse;
   }
+
+  addAccommodations(accommodationDetails: AccommodationDetails) {
+    console.log('addAccommodation method in service called');
+    return this.http.post<AccommodationDetails>(`${this.url}/addAccommodations`, accommodationDetails, httpOptions).toPromise()
+    .then(this.extractData)
+		.catch(this.handleErrorPromise);
+  }
+
+  private extractData(res: any) {
+    let body = res;
+    console.log('after post data', body)
+    return body;
+  }
+  private handleErrorPromise(error: Response | any) {
+    console.error(error.message || error);
+    return Promise.reject(error.message || error);
+  } 
 }
