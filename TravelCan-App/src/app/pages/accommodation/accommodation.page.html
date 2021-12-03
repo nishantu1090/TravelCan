@@ -1,0 +1,139 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Accommodation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="myclass">
+
+  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Accommodation</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="addAccommodations(f)" #f="ngForm">
+        <ion-item>
+          <ion-label position="stacked">City</ion-label>
+          <ion-input #city ngModel name="city" placeholder="Enter your city" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Rental Category</ion-label>
+          <ion-select #rentalCategory ngModel name="rentalCategory" placeholder="Select the rental category" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="long term rentals">Long Term rentals</ion-select-option>
+            <ion-select-option value="short term rentals">Short Term Rentals</ion-select-option>
+            <ion-select-option value="room rentals">Room Rentals</ion-select-option>
+            <ion-select-option value="storgae and parking">Storage and Parking for Rent</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Highest Price</ion-label>
+          <ion-input #highestPrice ngModel name="highestPrice" placeholder="Enter the Highest Price"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Lowest Price</ion-label>
+          <ion-input #lowestPrice ngModel name="lowestPrice" placeholder="Enter the Lowest Price"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Bedrooms</ion-label>
+          <ion-select #bedrooms ngModel name="bedrooms" placeholder="Select the number of bedrooms" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Bathrooms</ion-label>
+          <ion-select #bathrooms ngModel name="bathrooms" placeholder="Select the number of bathrooms" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Utilities</ion-label>
+          <ion-select #utilities ngModel name="utilities" placeholder="Select the Utilities" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="no preference">No Preference</ion-select-option>
+            <ion-select-option value="none">None</ion-select-option>
+            <ion-select-option value="hydro">Hydro</ion-select-option>
+            <ion-select-option value="heat">Heat</ion-select-option>
+            <ion-select-option value="water">Water</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Parking</ion-label>
+          <ion-select #parking ngModel name="parking" placeholder="Select the number of parkings" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="0">0</ion-select-option>
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Furnished</ion-label>
+          <ion-select #furnished ngModel name="furnished" placeholder="Select One">
+            <ion-select-option value="yes">Yes</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Appliances</ion-label>
+          <ion-select #appliances ngModel name="appliances" placeholder="Select the appliances" cancelText="Cancel" okText="Okay">
+            <ion-select-option value="none">None</ion-select-option>
+            <ion-select-option value="laundry">Laundry</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Pet Friendly</ion-label>
+          <ion-select #petFriendly ngModel name="petFriendly" placeholder="Select One">
+            <ion-select-option value="yes">Yes</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Address</ion-label>
+          <ion-input #city ngModel name="address" placeholder="Enter the Address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Landlord Name</ion-label>
+          <ion-input #city ngModel name="landlordName" placeholder="Enter the name of LandLord"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Landlord Phone </ion-label>
+          <ion-input #city ngModel name="landlordPhone" placeholder="Enter the phone number of LandLord"></ion-input>
+        </ion-item>
+        <ion-button type="submit" #addAccommodationBtn (click)="addAccommodations()" shape="round">Add Accommodation</ion-button>
+        <ion-button id="findAccommodations" (click)="getAccommodations()" shape="round" [ngClass]="{disabled: !getAccommodation}">Search Properties</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-header [translucent]="true"> 
+    <ion-toolbar>
+      <ion-title>Accommodations</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ion-card *ngFor = "let accommodation of accommodationResponse; let i be the index">
+      <div>
+        <ion-item>
+          <ion-label class="col-nd-4">{{accommodation.address}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="col-nd-4">{{accommodation.landlordName}}</ion-label>
+          <ion-label class="col-nd-4">{{accommodation.landlordPhone}}</ion-label>
+        </ion-item>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

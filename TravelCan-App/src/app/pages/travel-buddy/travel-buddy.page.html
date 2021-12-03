@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>TravelBuddy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="myclass">
+    
+    <ion-card>
+      <ion-card-content>
+        <form (ngSubmit)="addTravelPlan(f)" #f="ngForm">
+       
+        <ion-item>
+          <ion-label position="stacked">Origin</ion-label>
+          <ion-input #origin ngModel name="origin" placeholder="Enter your origin"></ion-input>
+        </ion-item>
+
+      <!--  <ion-item>
+          <ion-label position="stacked">To</ion-label>
+          <ion-input placeholder="Enter destination"></ion-input>
+        </ion-item>-->
+
+        <ion-item>
+          <ion-label position="stacked">Destination</ion-label> 
+          <ion-select #destination ngModel name="destination" placeholder="Enter destination">
+            <ion-select-option value="Windsor">Windsor(YQG)</ion-select-option>
+            <ion-select-option value="Toronto">Toronto(YYZ)</ion-select-option>
+            <ion-select-option value="Vancouver">Vancouver(YVR)</ion-select-option>
+            <ion-select-option value="Montreal">Montreal(YUL)</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Flight Number</ion-label>
+          <ion-input #flightNumber ngModel name="flightNumber" placeholder="Enter flight number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Date(MM/DD/YYYY)</ion-label>
+          <ion-datetime #doj ngModel name="doj" displayFormat="MM/DD/YYYY" min="2021-01-01" max="2023-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position = "stacked">Phone Number</ion-label>
+          <ion-input ngModel name="phoneNumber"></ion-input>
+        </ion-item>
+        <ion-button  id="findTravelButton" (click)="getBuddies()" [ngClass]="{disabled: !travelPlanAdded}" >Find Your Buddy</ion-button>
+        <ion-button type= "submit"  #addTravelPlanBtn (click) = "addTravelPlan()" shape="rectangle">Add Travel Plan</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+     
+      <ion-title>Your Buddies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <div *ngFor = "let buddy of travelBuddies; let i of index">
+      <ion-card>
+      <ion-item>
+        <ion-label>Name : {{buddy.firstName}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email id: {{buddy.email}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number: {{buddy.phoneNumber}}</ion-label>
+      </ion-item>
+      
+      </ion-card>
+      <!--<ion-item>
+        <ion-label>{{buddy.email}}</ion-label>
+      </ion-item> -->
+    </div>
+  </div>
+</ion-content>

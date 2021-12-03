@@ -1,0 +1,19 @@
+.flex-top{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: columns;
+    padding: 50px;
+}
+
+.disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+ion-content {
+    --background: var(--ion-color-success);
+}
+
+

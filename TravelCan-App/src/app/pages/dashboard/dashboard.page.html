@@ -1,0 +1,33 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+ <ion-content >
+  <ion-card style="margin-top: 100px;">
+    <ion-card-content >
+      <ion-item>
+        <button (click) = "routeToTravelBuddy()">Find your air travel companion!</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button (click) = "routeToRideShare()">Planning to take a ride!? Find a companion!!</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button (click) = "routeToAccommodation()">Need to find a place to live!? Allow us to help you!</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

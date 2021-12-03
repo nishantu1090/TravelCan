@@ -1,0 +1,96 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RideShare</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="myclass">
+    <ion-card>
+      <ion-card-content>
+        <form (ngSubmit)="addRideDetails(f)" #f="ngForm">
+
+        <ion-item>
+          <ion-label position="stacked">Start location</ion-label> 
+          <ion-select #airportName ngModel name="airportName" placeholder="Select Airport name">
+            <ion-select-option value="Montreal">Montreal</ion-select-option>
+            <ion-select-option value="Toronto">Toronto</ion-select-option>
+            <ion-select-option value="Vancouver">Vancouver</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Destination</ion-label> 
+          <ion-input #destination ngModel name="destination" placeholder="Enter your destination"></ion-input>      
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Exit Terminal number</ion-label>
+          <ion-select #exitTerminalNumber ngModel name="exitTerminalNumber" placeholder="Enter the exit Terminal">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+          </ion-select>
+        </ion-item>
+       
+        <ion-item>
+          <ion-label position="stacked">Number of passengers</ion-label>
+          <ion-input #numberOfPassengers ngModel name="numberOfPassengers" placeholder="Enter number of passengers"></ion-input>    
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Number of Luggage</ion-label>
+          <ion-input #numberOfLuggages ngModel name="numberOfLuggages" placeholder="Enter number of luggages"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contact Number</ion-label>
+          <ion-input #contactNumber ngModel name="contactNumber" placeholder="Enter contact number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ride Date</ion-label>          
+          <ion-input #dateOfRide ngModel name="dateOfRide" placeholder="Enter date in YYYY-MM-DD"></ion-input>
+          <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ride Time</ion-label>          
+          <ion-input #timeOfRide ngModel name="timeOfRide" placeholder="Enter time in HH:MM"></ion-input>
+          <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
+        </ion-item>
+
+        <!--<ion-button shape="rectangle"> Find Ride </ion-button>
+        <ion-button shape="rectangle"> Post Ride</ion-button>-->
+
+        <!--<ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>-->
+        <ion-button type= "submit"  #addRideDetailsBtn (click) = "addRideDetails()" shape="rectangle">Add Ride</ion-button>
+        <ion-button  id="findRideDetailsBtn" (click)="getRideDetails()" [ngClass]="{disabled: !rideDetailsAdded}" >Find Ride</ion-button>
+        </form>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+     
+      <ion-title>Available Rides</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <div *ngFor = "let ride of ridePlanDetails; let i of index">
+    <ion-card>
+      <ion-item>
+        <ion-label>Name : {{ride.firstName}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contact Number: {{ride.contactNumber}}</ion-label>
+      </ion-item>
+      </ion-card>
+   </div> 
+  </div>  
+</ion-content>
