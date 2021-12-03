@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
         {
           id: FacebookLoginProvider.PROVIDER_ID,
           provider: new FacebookLoginProvider(
-            '392903055915147'
+            '348163630451674'
           )
         }
       ]
