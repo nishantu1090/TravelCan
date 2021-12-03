@@ -14,12 +14,13 @@ import { SocialAuthService, SocialUser } from 'angularx-social-login';
   styleUrls: ['./accommodation.page.scss'],
 })
 export class AccommodationPage implements OnInit {
+  [x: string]: any;
   
   accommodationDetails: AccommodationDetails[];
   accommodationResponse: AccommodationResponse[];
   filteredAccommodations : AccommodationDetails[] = [];
   results: Observable<any>;
-  getAccommodation : Boolean;
+  accommodationAdded : Boolean;
   user:SocialUser = new SocialUser();
   accommodation : AccommodationDetails = new AccommodationDetails();
   @ViewChild('city', { read: ElementRef }) city : ElementRef;
@@ -36,12 +37,13 @@ export class AccommodationPage implements OnInit {
   @ViewChild('address', { read: ElementRef }) address : ElementRef;
   @ViewChild('landlordName',  { read: ElementRef }) landlordName : ElementRef;
   @ViewChild('landlordPhone',  { read: ElementRef }) landlordPhone: ElementRef;
+  @ViewChild('addAccommodationBtn', {read: ElementRef}) addAccommodationBtn : ElementRef;
 
   constructor(private accommodationService : AccommodationService,
               private socialAuthService: SocialAuthService) { }
 
   ngOnInit() {
-    this.getAccommodation = false;
+    this.accommodationAdded = false;
     this.socialAuthService.authState.subscribe((user) => {
       this.user = user;
       
@@ -49,19 +51,33 @@ export class AccommodationPage implements OnInit {
     });
   }
 
-  getAccommodations(form: NgForm){
-    console.log('searching for city', this.city.nativeElement.value);
-    console.log('searching for rental category', this.rentalCategory.nativeElement.value);
-    console.log('searching for highestPrice', this.highestPrice.nativeElement.value);
-    console.log('searching for lowestPrice', this.lowestPrice.nativeElement.value);
-    console.log('searching for bedrooms', this.bedrooms.nativeElement.value);
-    console.log('searching for bathrooms', this.bathrooms.nativeElement.value);
-    console.log('searching for utilities', this.utilities.nativeElement.value);
-    console.log('searching for parking', this.parking.nativeElement.value);
-    console.log('searching for furnished', this.furnished.nativeElement.value);
-    console.log('searching for appliances', this.appliances.nativeElement.value);
-    console.log('searching for petFriendly', this.petFriendly.nativeElement.value);
+  showConfirm() {
+    this.alertController.create({
+      header: 'Confirm',
+      message: 'Are you sure?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes, I want to add Accommodation.');
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            console.log('No, I do not want to add Accommodation.');
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
+    });
+  }
 
+  getAccommodations(form: NgForm){
+    if(!this.accommodationAdded){
+      return;
+    }
     this.accommodation.city = this.city.nativeElement.value;
     this.accommodation.rentalCategory = this.rentalCategory.nativeElement.value;
     this.accommodation.highestPrice = this.highestPrice.nativeElement.value.substring(0,10);
@@ -73,10 +89,34 @@ export class AccommodationPage implements OnInit {
     this.accommodation.furnished = this.furnished.nativeElement.value.substring(0,10);
     this.accommodation.appliances = this.appliances.nativeElement.value;
     this.accommodation.petFriendly = this.petFriendly.nativeElement.value;
+    console.log(this.accommodation)
     this.accommodationResponse = this.accommodationService.getAccommodationDetails(this.accommodation);
     
     console.log(this.accommodationResponse.length);
     console.log('in component', this.accommodationResponse);
+  }
+
+  addAccommodations(form: NgForm){
+    this.accommodation.city = form.value.city;
+    this.accommodation.rentalCategory = form.value.rentalCategory;
+    this.accommodation.highestPrice = form.value.highestPrice;
+    this.accommodation.lowestPrice = form.value.lowestPrice;
+    this.accommodation.bedrooms = form.value.bedrooms;
+    this.accommodation.bathrooms = form.value.bathrooms;
+    this.accommodation.utilities = form.value.utilities;
+    this.accommodation.parking = form.value.parking;
+    this.accommodation.furnished = form.value.furnished;
+    this.accommodation.appliances = form.value.appliances;
+    this.accommodation.petFriendly = form.value.petFriendly;
+    this.accommodation.address = form.value.address;
+    this.accommodation.landlordName = form.value.landlordName;
+    this.accommodation.landlordPhone = form.value.landlordPhone;
+    console.log(this.accommodation);
+    
+    this.accommodationAdded = true;
+    this.addAccommodationBtn.nativeElement.innerHTML= "Add Another Accommodation";
+    console.log(this.addAccommodationBtn.nativeElement);
+    this.accommodationService.addAccommodations(this.accommodation);
   }
 
 }
