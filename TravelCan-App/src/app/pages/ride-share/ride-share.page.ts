@@ -62,7 +62,8 @@ export class RideSharePage implements OnInit {
     this.rideDetails.dateOfRide = this.dateOfRide.nativeElement.value;
     this.rideDetails.timeOfRide = this.timeOfRide.nativeElement.value.substring(0,10); //doubt if it is this way for date-time
     this.ridePlanDetails = this.rideShareService.getRideDetails(this.rideDetails);
-    
+    console.log("return from service");
+    console.log('firstname in component', this.ridePlanDetails[0].firstName);
     console.log(this.ridePlanDetails.length);
     console.log('in component', this.ridePlanDetails);
   }  
