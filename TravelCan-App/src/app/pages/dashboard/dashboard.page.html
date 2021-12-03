@@ -8,36 +8,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
-  <ng-container>
-    <ion-list style="text-align:center">
-    
-           
-            <ion-button shape="rectangle">Travel Buddy </ion-button>
-          
-    
-    </ion-list>
-    <ion-list style="text-align:center">
-    
-      
-      <ion-button shape="rectangle"> Ride Share   </ion-button>
-      
 
-</ion-list>
-<ion-list style="text-align:center">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button (click) = "routeToTravelBuddy()">Travel Buddy</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button (click) = "routeToRideShare()">Ride Share</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button (click) = "routeToAccommodation()">Accommodation</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
     
-  <ion-button shape="rectangle">Accommodation </ion-button>
- 
-
-</ion-list>
-<ion-list style="text-align:center">
-    
-  
-  <ion-button shape="rectangle">Community Channel</ion-button>
- 
-
-</ion-list>
-    </ng-container>
-
-</ion-content>
