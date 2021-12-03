@@ -53,7 +53,8 @@
 
         <ion-item>
           <ion-label position="stacked">Ride Date</ion-label>          
-          <ion-input #dateOfRide ngModel name="dateOfRide" placeholder="Enter date in YYYY-MM-DD"></ion-input>
+          <ion-datetime #doj ngModel name="doj" displayFormat="MM/DD/YYYY" min="2021-12-04" max="2023-12-31" value="" placeholder="Enter the date of travel"></ion-datetime>
+          #dateOfRide ngModel name="dateOfRide" placeholder="Enter date in YYYY-MM-DD"></ion-input>
           <IonDatetime displayFormat="HH:mm" value=""></IonDatetime>
         </ion-item>
 
