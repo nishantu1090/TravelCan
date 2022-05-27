@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { TravelPlan } from 'src/app/models/TravelPlan';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
+
 @Component({
   selector: 'app-travel-buddy',
   templateUrl: './travel-buddy.page.html',
@@ -21,6 +22,7 @@ export class TravelBuddyPage implements OnInit {
   travelPlanAdded : Boolean;
   user:SocialUser = new SocialUser();
   travelPlan : TravelPlan = new TravelPlan();
+
   @ViewChild('origin', { read: ElementRef }) origin : ElementRef;
   @ViewChild('destination',  { read: ElementRef }) destination : ElementRef;
   @ViewChild('doj',  { read: ElementRef }) doj: ElementRef;
@@ -42,14 +44,16 @@ export class TravelBuddyPage implements OnInit {
   getBuddies(form: NgForm){
     console.log('getBuddies-travel-plan',this.travelPlan);
     console.log('searching for origin',this.origin.nativeElement.value);
-    //console.log('searchind flight number', this.flightNumber);
+    
     if(!this.travelPlanAdded){
       return;
     }
-
+    //Using search parameters
     this.travelPlan.doj = this.doj.nativeElement.value.substring(0,10);
     this.travelPlan.flightNumber = this.flightNumber.nativeElement.value;
     this.travelPlan.origin = this.origin.nativeElement.value;
+
+    //calling api
     this.travelBuddies = this.travelBuddyService.getTravelBuddies(this.travelPlan);
     
     console.log(this.travelBuddies.length);

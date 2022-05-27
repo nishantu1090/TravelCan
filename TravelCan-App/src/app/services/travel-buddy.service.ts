@@ -48,9 +48,6 @@ export class TravelBuddyService {
           buddy.phoneNumber = data[key].phoneNumber;
           console.log("fetched buddy", buddy)
           this.buddies.push(buddy);
-          
-          
-        
         }
       }
     });
