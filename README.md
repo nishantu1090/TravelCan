@@ -7,7 +7,7 @@ Run on Web:
     Execute the command: <br/>
         a> ionic serve <br />
         OR <br />
-        b> ionicserve --lab
+        b> ionicserve --lab<br />
 To run on Android Device:
     Execute the following commands:    
       a> ionic build<br/>
