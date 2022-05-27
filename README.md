@@ -1,16 +1,15 @@
 # TravelCan
-<br />
 
 # Steps to run the application
 1. Run on Web:
     Execute the command: Ionic serve
 2. To run on Android:
     Execute the following commands:    
-      a>Ionic build
-      b>Ionic capacitor add android
-      c>Ionic capacitor copy android
-      d>Ionic capacitor build android
-      e>Ionic capacitor run android
+      a>Ionic build<br/>
+      b>Ionic capacitor add android<br />
+      c>Ionic capacitor copy android<br />
+      d>Ionic capacitor build android<br />
+      e>Ionic capacitor run android<br />
    The code will be opened in Android Studio. Run on an emulator
 
 # Screenshots
