@@ -2,7 +2,7 @@
 
 # Steps to run the application
 1. Run on Web:
-    Execute the command: Ionic serve
+    Execute the command: Ionic serve or Ionic serve --lab
 2. To run on Android:
     Execute the following commands:    
       a>Ionic build<br/>
