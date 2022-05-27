@@ -3,16 +3,16 @@
 # Steps to run the application
 1. Run on Web:
     Execute the command: <br/>
-        a> Ionic serve Ionic<br />
+        a> ionic serve <br />
         OR <br />
-        b>serve --lab
+        b> ionicserve --lab
 2. To run on Android:
     Execute the following commands:    
-      a>Ionic build<br/>
-      b>Ionic capacitor add android<br />
-      c>Ionic capacitor copy android<br />
-      d>Ionic capacitor build android<br />
-      e>Ionic capacitor run android<br />
+      a> ionic build<br/>
+      b> ionic capacitor add android<br />
+      c> ionic capacitor copy android<br />
+      d> ionic capacitor build android<br />
+      e> ionic capacitor run android<br />
    The code will be opened in Android Studio. Run on an emulator
 
 # Screenshots
