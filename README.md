@@ -1,5 +1,19 @@
 # TravelCan
-ASE Project Repo
+<br />
+
+# Steps to run the application
+1. Run on Web:
+    Execute the command: Ionic serve
+2. To run on Android:
+    Execute the following commands:    
+      a>Ionic build
+      b>Ionic capacitor add android
+      c>Ionic capacitor copy android
+      d>Ionic capacitor build android
+      e>Ionic capacitor run android
+   The code will be opened in Android Studio. Run on an emulator
+
+# Screenshots
 ![Screen Shot 2022-05-26 at 12 20 59 PM](https://user-images.githubusercontent.com/26408013/170530863-e87eb03a-d918-4e98-ac23-0a30cc4e9628.png)
 ![Screen Shot 2022-05-27 at 12 12 27 PM](https://user-images.githubusercontent.com/26408013/170737982-a72bdcad-214c-4bbc-a0be-6e4175e2676a.png)
 ![Screen Shot 2022-05-26 at 12 26 37 PM](https://user-images.githubusercontent.com/26408013/170531573-f4e334e4-68c2-4eb5-be14-a1ebce69c41c.png)
