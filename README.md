@@ -2,7 +2,7 @@
 The TravelCan hybrid application can be used to find travel(flight/car-share) partners and to find people to share accommodation with. It was developed with the motivation of solving the problems faced by Internation students when they move to a new country for studies. This application can prove to be helful in the early stages of emmigration. Having a buddy always eases life! :)
 
 # Steps to run the application
-Clone the main branch, and follow below steps to run on web/android device
+Clone the main branch, and follow below steps to run on web/android device <br />
 Run on Web:
     Execute the command: <br/>
         a> ionic serve <br />
